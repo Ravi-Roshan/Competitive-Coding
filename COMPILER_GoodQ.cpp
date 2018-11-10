@@ -17,7 +17,7 @@ int main() {
 
 		lli l = s.length();
 
-		lli c = 0, i, res = 0, max = 0;
+		lli c = 0, i, res = 0, flag = 0, max_res = 0;
 		for(i = 0; i < l; i++) {
 			if(s[i] == '<') {
 				c++;
@@ -28,20 +28,17 @@ int main() {
 					res += 2;
 				}
 				else {
-					if(res >= max) {
-						max = res;
-						res = 0;
-					}
-					else {
-						res = 0;
-					}
+					flag = 1;
 				}
 			}
+			if(c == 0) {
+				max_res = res;
+			}
+			if(flag == 1) {
+				break;
+			}
 		}
-		if(res >= max) {
-			max = res;
-		}
-		cout<<max<<endl;
+		cout<<max_res<<endl;
 
 		t--;
 	}
